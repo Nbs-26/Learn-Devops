@@ -4,6 +4,14 @@
 #Description : To get the list of collborators/users having access to a repository.
 #Date : 14th December,2025 
 
+# Pre-requisites : 
+# 1) Run export username="USERNAME"
+# 2) Create a Personal Access Token(Classic) by going to the Developer Settings in the Profile.
+# 3) Run export token="TOKEN" , in the terminal to store the creds locally.(Replace the USERNAME & TOKEN with actual values)
+# 4) Run sudo apt install jq : To install jq library, used in the script.
+# 5) Provide req. premissions to the file : chmod 777 list-collaborators.sh
+# 6) Execute the script : ./list-collaborators.sh
+
 # GitHub API URL
 API_URL="https://api.github.com"
 
