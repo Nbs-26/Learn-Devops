@@ -1,0 +1,6 @@
+---
+- name : Install Node-Js and Deploy a sample Node-App on Ubuntu Server
+  hosts : node-servers
+  become : true
+  roles : 
+    - nodeapp 

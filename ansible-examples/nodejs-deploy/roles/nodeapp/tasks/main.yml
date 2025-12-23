@@ -1,0 +1,74 @@
+---
+# ---------- System packages ----------
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install required packages
+  apt:
+    name:
+      - curl
+      - ca-certificates
+      - ufw
+    state: present
+
+# ---------- Install Node.js ----------
+- name: Add NodeSource Node.js 20 repo
+  shell: |
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+  args:
+    creates: /etc/apt/sources.list.d/nodesource.list
+
+- name: Install Node.js
+  apt:
+    name: nodejs
+    state: present
+
+- name: Verify Node.js installation
+  command: node -v
+  changed_when: false
+
+# ---------- App directory ----------
+- name: Create app directory
+  file:
+    path: /opt/nodeapp
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+    mode: 0755
+
+- name: Copy sample Node.js app
+  copy:
+    src: app.js
+    dest: /opt/nodeapp/app.js
+    owner: ubuntu
+    group: ubuntu
+    mode: 0644
+
+# ---------- systemd service ----------
+- name: Create systemd service
+  template:
+    src: nodeapp.service.j2
+    dest: /etc/systemd/system/nodeapp.service
+
+- name: Reload systemd
+  command: systemctl daemon-reexec
+
+- name: Enable and start Node app
+  service:
+    name: nodeapp
+    state: started
+    enabled: yes
+
+# ---------- UFW ----------
+- name: Allow Node app port
+  ufw:
+    rule: allow
+    port: "3000"
+    proto: tcp
+
+- name: Enable UFW
+  ufw:
+    state: enabled
+    policy: allow
+
