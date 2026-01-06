@@ -1,0 +1,2 @@
+Please follow the link to get a detailed information of the task and its solution : 
+[Medium-Link](https://medium.com/@ikunalsingh/create-linux-user-with-non-interactive-shell-332c91cad6ff)
