@@ -24,14 +24,3 @@ project.git/
 ├── hooks/
 
 ⚠️ Notice: no source code files
-
-**Can I use my system similar to Github allowing developers to contribute the code to repo in my system?**
-Answer : Yes, although I cant reproduce the same UI as Github currently, the functionality can be replicated and will show you how.
-
-**Method-1**(Simplest): Push via File System Path (LAN / Shared Folder)
-Step-1 : Create a Bare Git Repository.
-Command : git init --bare <repo-name>.git
-<img width="737" height="278" alt="image" src="https://github.com/user-attachments/assets/b676bea0-3ee8-4b8b-b818-91612bba16de" />
-Note : .git contents are only present.(No working directory). You can't add files here
-
-
