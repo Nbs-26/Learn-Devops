@@ -10,11 +10,9 @@ A Bare-Git-Repository is a repository/folder with **only** Git's internal conten
 | `git push` target | ❌ Not recommended            | ✅ Ideal                                 |
 
 How to initialize a bare Git repository?
+-> git init --bare project.git
 
-Method 1: Initialize directly (most common)
-git init --bare project.git
-
-This creates a directory:
+This creates a directory with the structure:
 
 project.git/
 ├── HEAD
